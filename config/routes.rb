@@ -1,24 +1,22 @@
+
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
   post 'github_webhooks/sponsored'
-  get 'omniauth_callbacks/github'
-  get 'omniauth_callbacks/failure'
-  get "users/auth/github/callback", to: "omniauth_callbacks#github", as: :github_callback
-  get "auth/failure", to: "omniauth_callbacks#failure"
 
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
-authenticate :user, lambda { |u| u.admin? } do
-  mount Sidekiq::Web => '/sidekiq'
 
-  namespace :madmin do
-    resources :impersonates do
-      post :impersonate, on: :member
-      post :stop_impersonating, on: :collection
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+
+    namespace :madmin do
+      resources :impersonates do
+        post :impersonate, on: :member
+        post :stop_impersonating, on: :collection
+      end
     end
   end
-end
 
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
@@ -29,3 +27,4 @@ end
   # Almost every application defines a route for the root path ("/") at the top of this file.
   # root "articles#index"
 end
+

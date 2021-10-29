@@ -83,10 +83,17 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     bcrypt (3.1.16)
+    better_errors (2.9.1)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
     bindex (0.8.1)
+    binding_of_caller (1.0.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
     builder (3.2.4)
+    byebug (11.1.3)
     capybara (3.36.0)
       addressable
       matrix
@@ -98,6 +105,7 @@ GEM
       xpath (~> 3.2)
     childprocess (4.1.0)
     chronic (0.10.2)
+    coderay (1.1.3)
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crass (1.0.6)
@@ -106,6 +114,7 @@ GEM
     debug (1.3.1)
       irb (>= 1.3.6)
       reline (>= 0.2.7)
+    debug_inspector (1.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.10.0)
@@ -191,6 +200,8 @@ GEM
     name_of_person (1.1.1)
       activesupport (>= 5.2.0)
     nio4r (2.5.8)
+    nokogiri (1.12.5-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     noticed (1.4.1)
@@ -229,6 +240,12 @@ GEM
     pg (1.2.3)
     pretender (0.3.4)
       actionpack (>= 4.2)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-byebug (3.9.0)
+      byebug (~> 11.0)
+      pry (~> 0.13.0)
     public_suffix (4.0.6)
     puma (5.5.2)
       nio4r (~> 2.0)
@@ -330,6 +347,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   bootsnap (>= 1.4.4)
   capybara (>= 3.26)
   cssbundling-rails
@@ -352,6 +371,7 @@ DEPENDENCIES
   omniauth-twitter (~> 1.4)
   pg (~> 1.1)
   pretender (~> 0.3.4)
+  pry-byebug
   puma (~> 5.0)
   pundit (~> 2.1)
   rails (~> 7.0.0.alpha2)

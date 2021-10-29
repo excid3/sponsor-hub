@@ -59,6 +59,9 @@ group :development do
 
   # Log outgoing HTTP requests made from your application, help out with debugging dev
   gem "httplog", "~> 1.5"
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "pry-byebug"
 end
 
 group :test do

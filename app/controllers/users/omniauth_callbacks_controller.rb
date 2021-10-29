@@ -27,6 +27,9 @@ module Users
       if service.present?
         service.update(service_attrs)
       else
+        # TODO: sort out the right place to create_user for oauth login
+        create_user unless user.persisted?
+
         user.services.create(service_attrs)
       end
 
@@ -73,7 +76,9 @@ module Users
     end
 
     def create_user
-      User.create(
+      # Force exception if validations fail
+      # TODO: review if should be using an alternative to create!
+      User.create!(
         email: auth.info.email,
         #name: auth.info.name,
         password: Devise.friendly_token[0,20]

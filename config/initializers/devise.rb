@@ -1,4 +1,9 @@
 # frozen_string_literal: true
+#require 'omniauth'
+require 'omniauth-github'
+#require 'omniauth/builder'
+require 'httplog' # require this *after* your HTTP gem of choice
+
 class TurboFailureApp < Devise::FailureApp
   def respond
     if request_format == :turbo_stream
@@ -286,12 +291,18 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  env_creds = Rails.application.credentials[Rails.env.to_sym] || {}
-  %i{ facebook twitter github }.each do |provider|
-    if options = env_creds[provider]
-      config.omniauth provider, options[:app_id], options[:app_secret], options.fetch(:options, {})
-    end
-  end
+  # TODO: Clean-up: Is this code obsolete? env_creds isn't getting populated
+  # env_creds = Rails.application.credentials[Rails.env.to_sym] || {}
+  # %i{ facebook twitter github }.each do |provider|
+  #   if options = env_creds[provider]
+  #     config.omniauth provider, options[:app_id], options[:app_secret], options.fetch(:options, {})
+  #   end
+  # end
+
+  # setup github devise omniauth
+  client_id = Rails.application.credentials.github.client_id
+  client_secret = Rails.application.credentials.github.client_secret
+  config.omniauth :github, client_id, client_secret, scope: 'user:email'
 
   # ==> Warden configuration
   config.warden do |manager|
@@ -331,4 +342,5 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+  #
 end
