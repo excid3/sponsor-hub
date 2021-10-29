@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-#require 'omniauth'
 require 'omniauth-github'
-#require 'omniauth/builder'
 require 'httplog' # require this *after* your HTTP gem of choice
 
 class TurboFailureApp < Devise::FailureApp
