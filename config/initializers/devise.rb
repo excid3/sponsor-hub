@@ -298,6 +298,7 @@ Devise.setup do |config|
   # end
 
   # setup github devise omniauth
+  # NOTE: for scopes see: https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
   client_id = Rails.application.credentials.github.client_id
   client_secret = Rails.application.credentials.github.client_secret
   config.omniauth :github, client_id, client_secret, scope: 'user:email'

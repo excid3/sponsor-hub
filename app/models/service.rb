@@ -18,15 +18,15 @@ class Service < ApplicationRecord
     super
   end
 
-
-  def twitter_client
-    Twitter::REST::Client.new do |config|
-      config.consumer_key        = Rails.application.secrets.twitter_app_id
-      config.consumer_secret     = Rails.application.secrets.twitter_app_secret
-      config.access_token        = access_token
-      config.access_token_secret = access_token_secret
-    end
-  end
-
-  def twitter_refresh_token!(token); end
+  # TODO: clean-up this code, is it here for an example?
+  # def twitter_client
+  #   Twitter::REST::Client.new do |config|
+  #     config.consumer_key        = Rails.application.secrets.twitter_app_id
+  #     config.consumer_secret     = Rails.application.secrets.twitter_app_secret
+  #     config.access_token        = access_token
+  #     config.access_token_secret = access_token_secret
+  #   end
+  # end
+  #
+  # def twitter_refresh_token!(token); end
 end
