@@ -14,8 +14,10 @@
     "sass": "^1.43.4",
     "trix": "^1.3.1"
   },
-  "scripts": {
-    "build": "node esbuild.config.js",
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "scripts": {
+      "kill_esbuilds": "ps -ef |  grep -v 'grep' | grep -E 'esbuild.*(watch|ping)' | ruby -a -F\"\\s+\" -n -e 'puts \"PID:#{$F[1]}, PPID:#{$F[2]}:#{$F.slice((7..))}\"; system(\"kill -HUP #{$F[1]}\")'",
+      "show_esbuilds": "ps -ef |  grep -v 'grep' | grep -E 'esbuild.*(watch|ping)' | ruby -a -F\"\\s+\" -n -e 'puts \"PID:#{$F[1]}, PPID:#{$F[2]}:#{$F.slice((7..))}\"'",
+      "build": "node esbuild.config.js",
+      "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }

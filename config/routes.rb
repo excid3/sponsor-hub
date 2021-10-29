@@ -1,6 +1,12 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  post 'github_webhooks/sponsored'
+  get 'omniauth_callbacks/github'
+  get 'omniauth_callbacks/failure'
+  get "users/auth/github/callback", to: "omniauth_callbacks#github", as: :github_callback
+  get "auth/failure", to: "omniauth_callbacks#failure"
+
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
 authenticate :user, lambda { |u| u.admin? } do

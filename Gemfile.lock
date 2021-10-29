@@ -149,6 +149,9 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
+    httplog (1.5.0)
+      rack (>= 1.0)
+      rainbow (>= 2.0.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -188,8 +191,6 @@ GEM
     name_of_person (1.1.1)
       activesupport (>= 5.2.0)
     nio4r (2.5.8)
-    nokogiri (1.12.5-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     noticed (1.4.1)
@@ -217,6 +218,9 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
@@ -263,6 +267,7 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
       zeitwerk (~> 2.5.0.beta3)
+    rainbow (3.0.0)
     rake (13.0.6)
     redis (4.5.1)
     regexp_parser (2.1.1)
@@ -332,6 +337,7 @@ DEPENDENCIES
   devise!
   friendly_id (~> 5.4)
   hotwire-rails
+  httplog (~> 1.5)
   image_processing
   importmap-rails (>= 0.3.4)
   jbuilder (~> 2.7)
@@ -342,6 +348,7 @@ DEPENDENCIES
   noticed (~> 1.4)
   omniauth-facebook (~> 8.0)
   omniauth-github (~> 2.0)
+  omniauth-rails_csrf_protection (~> 1.0)
   omniauth-twitter (~> 1.4)
   pg (~> 1.1)
   pretender (~> 0.3.4)

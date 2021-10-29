@@ -56,6 +56,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Log outgoing HTTP requests made from your application, help out with debugging dev
+  gem "httplog", "~> 1.5"
 end
 
 group :test do
@@ -64,6 +67,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
 gem "cssbundling-rails"
 gem "devise", git: "https://github.com/heartcombo/devise", branch: "main"
 gem "friendly_id", "~> 5.4"
@@ -83,3 +89,5 @@ gem "sitemap_generator", "~> 6.1"
 gem "whenever", require: false
 gem "responders", github: "heartcombo/responders", branch: "main"
 gem "nokogiri", ">= 1.12.5"
+
+

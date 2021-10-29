@@ -65,4 +65,10 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # in development we user a proxy for accessing https://localhost
+  # for example see: https://ngrok.com/
+  https_localhost = ENV['HTTPS_LOCALHOST'] || Rails.application.config_for(:connections)[:https_localhost]
+  Rails.logger.debug("config.hosts HTTPS_LOCALHOST: #{https_localhost}")
+  config.hosts << https_localhost
 end
