@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_person_name
 
   has_many :notifications, as: :recipient
-  has_many :services
+   
+  # TODO: verify there isn't a reason not to dependent: :destroy
+  has_many :services, dependent: :destroy
 
 end
