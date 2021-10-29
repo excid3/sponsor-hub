@@ -26,7 +26,9 @@ module SponsorHub
   end
 
   class Application < Rails::Application
+
     Rails.logger = Logger.new(STDOUT)
+    Rails.logger.class.include ActiveSupport::LoggerSilence
     Rails.logger.level = Logger::DEBUG
     Rails.logger.formatter = DevSimpleFormatter.new
 
