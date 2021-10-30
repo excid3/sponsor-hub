@@ -31,13 +31,19 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore development decryption key, share selectively
+/config/credentials/development.key
+
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
 /node_modules
 
 .byebug_history
+
+# Ignore Jetbrains IDE project files, like Rubymine
 .idea/
+
+# Emacs backup files always end in tilda ~
 *~
 
-/config/credentials/development.key
