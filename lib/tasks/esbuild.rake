@@ -12,8 +12,7 @@ namespace :esbuild do
     if pids.empty?
       puts '*** No esbuild process found'
     else
-      output = `#{show_ps_command}`
-      puts output
+      puts `#{show_ps_command}`
     end
   end
 
@@ -24,7 +23,7 @@ namespace :esbuild do
     if pids.empty?
       puts '*** No esbuild process found'
     else
-      kill_pids(pids)
+      kill_pids(pids.split("\n"))
     end
   end
 
@@ -38,7 +37,8 @@ namespace :esbuild do
   def kill_pids(pids)
     killed_count = 0
     error_pids = []
-    pids.split("\n").each do |pid|
+    puts "Found #{pids.length} running..."
+    pids.each do |pid|
       pid.strip!
       kill_command = "kill -HUP #{pid}"
       puts kill_command
@@ -46,6 +46,7 @@ namespace :esbuild do
       $CHILD_STATUS.success? ? killed_count += 1 : error_pids << pid
     end
 
+    puts "Successfully killed #{killed_count}."
     puts "Error killing #{error_pids.length} process PIDs: #{error_pids}" if error_pids.length.positive?
   end
 
