@@ -47,3 +47,5 @@
 # Emacs backup files always end in tilda ~
 *~
 
+# Ignore docs in progress
+doc/wip

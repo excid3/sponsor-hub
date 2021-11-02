@@ -199,6 +199,7 @@ GEM
     multipart-post (2.1.1)
     name_of_person (1.1.1)
       activesupport (>= 5.2.0)
+    neatjson (0.9)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
@@ -363,6 +364,7 @@ DEPENDENCIES
   jsbundling-rails
   madmin
   name_of_person (~> 1.1)
+  neatjson (~> 0.9)
   nokogiri (>= 1.12.5)
   noticed (~> 1.4)
   omniauth-facebook (~> 8.0)
