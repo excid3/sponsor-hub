@@ -94,3 +94,5 @@ gem "responders", github: "heartcombo/responders", branch: "main"
 gem "nokogiri", ">= 1.12.5"
 
 
+
+gem "neatjson", "~> 0.9"

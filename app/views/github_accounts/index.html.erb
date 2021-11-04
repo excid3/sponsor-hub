@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h2>Your Github Accounts</h2>
+    </div>
+
+    <div class="col-4">
+      <!-- TODO: add path / controller method to add github account -->
+      <%= button_to 'Add Github Account', '#',
+                    method: :post, data: { turbo: false }, data: {attribute: 'disabled'} %>
+    </div>
+  </div>
+</div>
+<div class="container m-2">
+  <hr/>
+  <% github_accounts.each do |account| %>
+    <%= render partial: 'account_listing', locals: { account: account } %>
+  <% end %>
+</div>

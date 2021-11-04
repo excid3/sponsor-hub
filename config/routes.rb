@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'github_accounts/index'
   post 'github_webhooks/sponsored'
 
   get '/privacy', to: 'home#privacy'
