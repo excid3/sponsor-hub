@@ -49,5 +49,17 @@ module SponsorHub
     config.session_store :cookie_store, key: '_sponsor_hub_session'
 
     Rails.logger.debug("config.web_console.allowed_ips:(#{config.web_console.allowed_ips.each(&:to_s)})")
+
+    # QUESTION: Where are these options are documented?
+    #       #g.hidden_namespaces << :test_unit << :erb
+    #       #g.test_framework  :mini_test
+    #       #g.hidden_namespaces << :test_unit << :mini_test
+    config.generators do |g|
+      g.test_framework  nil
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
+      g.channel         assets: false
+    end
   end
 end

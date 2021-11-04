@@ -18,10 +18,28 @@ module Users
     end
 
     def github
+      add_github_account
       handle_auth "Github"
     end
 
     private
+
+    # TODO: improve flow for adding github accounts, support adding multiple accounts
+    def add_github_account
+      Rails.logger.debug "add_github_account auth json\n#{JSON.neat_generate(
+        auth.info, sort: true, wrap: 40, aligned: true, around_colon: 1)}"
+
+      github_account = user.github_accounts.where(login:auth.info.nickname).first_or_initialize
+      github_account.update(
+        name: auth.info.name,
+        ghid: auth.extra.raw_info.node_id,
+        login: auth.info.nickname,
+        email: auth.info.email,
+        image: auth.info.image,
+        token: auth.credentials.token
+      )
+      Rails.logger.debug "added/updated github_account:login:(#{github_account.login})"
+    end
 
     def handle_auth(kind)
       if service.present?
